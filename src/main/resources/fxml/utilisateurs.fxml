@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.livrehome.controller.UtilisateurController"
+            stylesheets="@../css/utilisateurs.css">
+
+    <!-- HEADER -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+
+            <Label text="Gestion des Utilisateurs"
+                   styleClass="title-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <TextField fx:id="searchField"
+                       promptText="🔍 Rechercher..."
+                       prefWidth="250"/>
+        </HBox>
+    </top>
+
+    <!-- CONTENU -->
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="10" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- FORM -->
+            <VBox spacing="10" prefWidth="350" styleClass="card">
+
+                <Label text="Informations Utilisateur"
+                       styleClass="card-title"/>
+
+                <TextField fx:id="loginField" promptText="Login"/>
+                <PasswordField fx:id="passwordField" promptText="Mot de passe"/>
+                <TextField fx:id="nomField" promptText="Nom"/>
+                <TextField fx:id="prenomField" promptText="Prénom"/>
+                <TextField fx:id="emailField" promptText="Email"/>
+                <ComboBox fx:id="profilComboBox" promptText="Profil"/>
+                <CheckBox fx:id="actifCheckBox" text="Compte actif" selected="true"/>
+
+                <!-- Boutons principaux -->
+                <HBox spacing="10">
+                    <Button text="Ajouter"
+                            onAction="#handleAjouter"
+                            styleClass="btn-success"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Modifier"
+                            onAction="#handleModifier"
+                            styleClass="btn-primary"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+                </HBox>
+
+                <!-- Boutons secondaires -->
+                <HBox spacing="10">
+                    <Button text="Supprimer"
+                            onAction="#handleSupprimer"
+                            styleClass="btn-danger"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Reset MDP"
+                            onAction="#handleResetPassword"
+                            styleClass="btn-warning"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+                </HBox>
+
+                <HBox spacing="10">
+                    <Button text="Activer/Désactiver"
+                            onAction="#handleToggleActif"
+                            styleClass="btn-info"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+
+                    <Button text="Vider"
+                            onAction="#handleClear"
+                            styleClass="btn-secondary"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+                </HBox>
+
+
+            </VBox>
+
+            <!-- TABLE -->
+            <VBox HBox.hgrow="ALWAYS" styleClass="card">
+
+                <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                        <TableColumn fx:id="colLogin" text="Login" prefWidth="120"/>
+                        <TableColumn fx:id="colNom" text="Nom" prefWidth="120"/>
+                        <TableColumn fx:id="colProfil" text="Profil" prefWidth="120"/>
+                        <TableColumn fx:id="colActif" text="Statut" prefWidth="100"/>
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,98 @@
+.dashboard-root {
+    -fx-background-color: #f4f6f9;
+}
+
+/* Top Bar */
+.top-bar {
+    -fx-background-color: linear-gradient(to right, #1f4037, #99f2c8);
+}
+
+.welcome-label {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Side Menu */
+.side-menu {
+    -fx-background-color: #1e293b;
+}
+
+.menu-title {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-pref-height: 40px;
+    -fx-background-radius: 8px;
+}
+
+.menu-button:hover {
+    -fx-background-color: #334155;
+}
+
+/* Content */
+.content-area {
+    -fx-background-color: transparent;
+}
+
+/* Stat Cards */
+.stat-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-spacing: 8;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10,0,0,4);
+}
+
+.alert-card {
+    -fx-border-color: #ef4444;
+    -fx-border-radius: 12;
+}
+
+.stat-title {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 13px;
+}
+
+.stat-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.alert-text {
+    -fx-text-fill: #ef4444;
+}
+
+/* Section title */
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+/* List */
+.modern-list {
+    -fx-background-radius: 12;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8,0,0,3);
+}
+
+/* Buttons */
+.btn-secondary {
+    -fx-background-color: #0ea5e9;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+.btn-danger {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}

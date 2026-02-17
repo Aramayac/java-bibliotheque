@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<?import java.lang.String?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="100.0" prefWidth="100.0"
+            styleClass="adherents-root"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.livreshome.controller.AdherentController">
+
+    <!-- ✅ CHEMIN CSS CORRECT -->
+    <stylesheets>
+        <String fx:value="/css/adherents.css"/>
+    </stylesheets>
+
+    <!-- ========== TOP SECTION ========== -->
+    <top>
+        <VBox styleClass="adherents-top">
+            <!-- Header Title -->
+            <!-- ✅ AJOUTE styleClass="adherents-title-container" -->
+            <VBox spacing="8.0" styleClass="adherents-title-container">
+                <Label text="👥 Gestion des Adhérents" styleClass="adherents-title"/>
+                <Label text="Gérez les adhésions et les membres de votre bibliothèque" styleClass="adherents-subtitle"/>
+            </VBox>
+
+            <!-- Search & Filter Bar -->
+            <HBox styleClass="search-filter-bar">
+                <JFXTextField fx:id="tfSearch"
+                              promptText="🔍 Rechercher un adhérent (nom, email)..."
+                              styleClass="search-field"/>
+
+                <JFXComboBox fx:id="cbFilter" styleClass="filter-combo"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <JFXButton fx:id="btnAddAdherent"
+                           onAction="#onAddAdherent"
+                           text="➕ Nouvel Adhérent"
+                           styleClass="btn-add-adherent"/>
+
+                <JFXButton fx:id="btnRefresh"
+                           onAction="#onRefresh"
+                           text="🔄"
+                           styleClass="btn-refresh"/>
+            </HBox>
+
+            <!-- Stats Cards -->
+            <HBox styleClass="stats-container">
+                <!-- Total Adherents Card -->
+                <VBox styleClass="stat-card-total">
+                    <Label text="📊 Total Adhérents" styleClass="stat-label-title"/>
+                    <Label fx:id="lblTotalAdherents" text="0" styleClass="stat-label-value"/>
+                </VBox>
+
+                <!-- Active Adherents Card -->
+                <VBox styleClass="stat-card-active">
+                    <Label text="✅ Adhérents Actifs" styleClass="stat-label-title"/>
+                    <Label fx:id="lblActiveAdherents" text="0" styleClass="stat-label-value-active"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- ========== CENTER - TABLE ========== -->
+    <center>
+        <VBox styleClass="table-container">
+            <!-- Table Card -->
+            <VBox styleClass="table-card" VBox.vgrow="ALWAYS">
+
+                <!-- Table Header Bar -->
+                <HBox styleClass="table-header">
+                    <Label text="📋 Liste des Adhérents" styleClass="table-header-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblResultCount" text="0 résultats" styleClass="table-result-count"/>
+                </HBox>
+
+                <!-- Table -->
+                <TableView fx:id="tvAdherents" VBox.vgrow="ALWAYS" styleClass="table-view">
+                    <columns>
+                        <TableColumn prefWidth="50.0" text="ID" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="100.0" text="Matricule" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="matricule"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="120.0" text="Nom" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="nom"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="120.0" text="Prénom" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="prenom"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="160.0" text="📧 Email" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="email"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="130.0" text="☎️ Téléphone" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="telephone"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="120.0" text="📅 Inscription" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="dateInscription"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="100.0" text="Statut" sortable="true">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="actif"/>
+                            </cellValueFactory>
+                        </TableColumn>
+
+                        <TableColumn prefWidth="120.0" text="Actions" sortable="false">
+                            <!-- Actions seront ajoutées dynamiquement -->
+                        </TableColumn>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

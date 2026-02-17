@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.livrehome.controller.LivreController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <Label layoutX="50" layoutY="50" text="ISBN:"/>
+        <TextField fx:id="isbnField" layoutX="150" layoutY="50"/>
+
+        <Label layoutX="50" layoutY="100" text="Titre:"/>
+        <TextField fx:id="titreField" layoutX="150" layoutY="100"/>
+
+        <Label layoutX="50" layoutY="150" text="Auteur:"/>
+        <TextField fx:id="auteurField" layoutX="150" layoutY="150"/>
+
+        <Label layoutX="50" layoutY="200" text="Année:"/>
+        <TextField fx:id="anneeField" layoutX="150" layoutY="200"/>
+
+        <Label layoutX="50" layoutY="250" text="Exemplaires:"/>
+        <TextField fx:id="exemplairesField" layoutX="150" layoutY="250"/>
+
+        <Button fx:id="saveButton" layoutX="150" layoutY="300"
+                text="Enregistrer" onAction="#handleSave"/>
+    </children>
+</AnchorPane>

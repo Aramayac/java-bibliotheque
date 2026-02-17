@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="900.0" prefWidth="1400.0" style="-fx-background-color: #F5F7FB;"
+            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.livreshome.controller.LivreController">
+
+   <children>
+      <!-- MAIN CONTENT -->
+      <VBox prefHeight="900.0" prefWidth="1400.0" spacing="20.0">
+         <padding>
+            <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+         </padding>
+         <children>
+            <!-- HEADER -->
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="Gestion des Livres" textFill="#1F2937">
+                     <font>
+                        <Font name="Segoe UI Bold" size="28.0"/>
+                     </font>
+                  </Label>
+                  <Label text="Gérez l'inventaire de votre bibliothèque" textFill="#6B7280">
+                     <font>
+                        <Font name="Segoe UI" size="13.0"/>
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+
+            <!-- TOOLBAR -->
+            <HBox spacing="15.0" alignment="CENTER_LEFT">
+               <children>
+                  <!-- Search Field -->
+                  <JFXTextField fx:id="tfSearch" focusColor="#4A6FA5"
+                                promptText="🔍 Rechercher un livre..." unFocusColor="#D1D5DB"
+                                prefWidth="300.0">
+                     <font>
+                        <Font name="Segoe UI" size="12.0"/>
+                     </font>
+                  </JFXTextField>
+
+                  <!-- Spacer -->
+                  <javafx.scene.layout.Pane HBox.hgrow="ALWAYS"/>
+
+                  <!-- Add Button -->
+                  <JFXButton fx:id="btnAddLivre" onAction="#onAddLivre"
+                             prefHeight="40.0" prefWidth="150.0"
+                             style="-fx-background-color: #10B981; -fx-cursor: hand;"
+                             text="➕ Ajouter Livre" textFill="#FFFFFF">
+                     <font>
+                        <Font name="Segoe UI SemiBold" size="12.0"/>
+                     </font>
+                  </JFXButton>
+
+                  <!-- Refresh Button -->
+                  <JFXButton fx:id="btnRefresh" onAction="#onRefresh"
+                             prefHeight="40.0" prefWidth="40.0"
+                             style="-fx-background-color: #4A6FA5; -fx-cursor: hand;"
+                             text="🔄" textFill="#FFFFFF">
+                     <font>
+                        <Font size="14.0"/>
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+
+            <!-- TABLE -->
+            <ScrollPane fitToWidth="true" prefHeight="700.0"
+                        style="-fx-background: transparent; -fx-border-color: transparent;">
+               <VBox>
+               <children>
+                  <TableView fx:id="tvLivres" prefHeight="700.0" prefWidth="1340.0">
+                     <columns>
+                        <TableColumn prefWidth="60.0" text="ID">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="id"/>
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="120.0" text="ISBN">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="isbn"/>
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="250.0" text="Titre">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="titre"/>
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="200.0" text="Auteur">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="auteur"/>
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="120.0" text="Année">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="anneePublication"/>
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Exemplaires">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="nombreExemplaires"/>
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Disponible">
+                           <cellValueFactory>
+                              <PropertyValueFactory property="disponible"/>
+                           </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="130.0" text="Actions">
+                           <!-- À implémenter avec boutons -->
+                        </TableColumn>
+                     </columns>
+                  </TableView>
+               </children>
+               </VBox>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

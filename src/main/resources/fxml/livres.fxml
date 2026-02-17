@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.livrehome.controller.LivreController"
+            stylesheets="@../css/livre.css"
+            styleClass="root">
+
+    <!-- ================= HEADER ================= -->
+    <top>
+        <HBox spacing="40" alignment="CENTER_LEFT" styleClass="header">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="📚 Gestion des Livres" styleClass="title"/>
+
+            <VBox>
+                <Label text="Total Livres" styleClass="stat-label"/>
+                <Label fx:id="lblTotalLivres" text="0" styleClass="stat-value"/>
+            </VBox>
+
+            <VBox>
+                <Label text="Disponibles" styleClass="stat-label"/>
+                <Label fx:id="lblLivresDisponibles" text="0" styleClass="stat-value"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <TextField fx:id="txtRecherche"
+                       promptText="🔍 Rechercher..."
+                       prefWidth="250"
+                       styleClass="search-field"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+        <HBox spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- ================= TABLE ================= -->
+            <VBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+
+                <TableView fx:id="tableLivres"
+                           styleClass="modern-table"
+                           VBox.vgrow="ALWAYS">
+
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                        <TableColumn fx:id="colIsbn" text="ISBN" prefWidth="120"/>
+                        <TableColumn fx:id="colTitre" text="Titre" prefWidth="200"/>
+                        <TableColumn fx:id="colAuteur" text="Auteur" prefWidth="150"/>
+                        <TableColumn fx:id="colAnnee" text="Année" prefWidth="80"/>
+                        <TableColumn fx:id="colCategorie" text="Catégorie" prefWidth="140"/>
+                        <TableColumn fx:id="colExemplaires" text="Exemplaires" prefWidth="100"/>
+                        <TableColumn fx:id="colDisponibles" text="Disponibles" prefWidth="110"/>
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+            <!-- ================= FORMULAIRE ================= -->
+            <VBox spacing="10"
+                  prefWidth="320"
+                  styleClass="form-panel">
+
+                <Label text="📖 Formulaire Livre" styleClass="form-title"/>
+
+                <Label text="ISBN"/>
+                <TextField fx:id="txtIsbn"/>
+
+                <Label text="Titre"/>
+                <TextField fx:id="txtTitre"/>
+
+                <Label text="Auteur"/>
+                <TextField fx:id="txtAuteur"/>
+
+                <Label text="Année"/>
+                <TextField fx:id="txtAnnee"/>
+
+                <Label text="Exemplaires"/>
+                <TextField fx:id="txtExemplaires"/>
+
+                <Label text="Catégorie"/>
+                <ComboBox fx:id="cmbCategorie"/>
+
+                <Separator/>
+
+                <!-- ===== BOUTONS ALIGNÉS ===== -->
+                <HBox spacing="10">
+                    <Button fx:id="btnAjouter"
+                            text="Ajouter"
+                            onAction="#ajouterLivre"
+                            styleClass="btn-primary"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+
+                    <Button fx:id="btnModifier"
+                            text="Modifier"
+                            onAction="#modifierLivre"
+                            styleClass="btn-warning"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+
+                    <Button fx:id="btnSupprimer"
+                            text="Supprimer"
+                            onAction="#supprimerLivre"
+                            styleClass="btn-danger"
+                            HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+                </HBox>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>

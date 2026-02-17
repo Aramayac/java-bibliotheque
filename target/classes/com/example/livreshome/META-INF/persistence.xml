@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="bibliothequePU" transaction-type="RESOURCE_LOCAL">
+        <!-- Fournisseur JPA -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Classes mappées (Entités) -->
+        <class>com.example.livreshome.model.Utilisateur</class>
+        <class>com.example.livreshome.model.Categorie</class>
+        <class>com.example.livreshome.model.Livre</class>
+        <class>com.example.livreshome.model.Adherent</class>
+        <class>com.example.livreshome.model.Emprunt</class>
+
+        <properties>
+            <!-- ========== CONNEXION BD ========== -->
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/bibliotheque?serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+            <!-- ========== HIBERNATE CONFIG ========== -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+
+            <!-- Génération automatique des tables -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <!-- Affichage du SQL généré -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- Pool de connexions -->
+            <property name="hibernate.hikari.minimumIdle" value="5"/>
+            <property name="hibernate.hikari.maximumPoolSize" value="10"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.livrehome.controller.AdherentController"
+      stylesheets="@../css/adherents.css"
+      spacing="10"
+      prefWidth="1000"
+      prefHeight="700">
+
+    <!-- En-tête -->
+    <HBox styleClass="header-section" alignment="CENTER_LEFT" spacing="10">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <Label text="Gestion des Adhérents" styleClass="page-title" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Statistiques -->
+    <HBox spacing="10">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <VBox styleClass="stat-card" spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Total Adhérents" styleClass="stat-label"/>
+            <Label fx:id="lblTotalAdherents" text="0" styleClass="stat-value"/>
+        </VBox>
+        <VBox styleClass="stat-card" spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Adhérents Actifs" styleClass="stat-label"/>
+            <Label fx:id="lblAdherentsActifs" text="0" styleClass="stat-value-success"/>
+        </VBox>
+        <VBox styleClass="stat-card" spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Nouveaux ce Mois" styleClass="stat-label"/>
+            <Label fx:id="lblNouveauxMois" text="0" styleClass="stat-value-info"/>
+        </VBox>
+    </HBox>
+
+    <!-- Zone de recherche -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <TextField fx:id="txtRecherche" promptText="Rechercher un adhérent..." styleClass="search-field" prefWidth="300"/>
+    </HBox>
+
+    <!-- TableView et Formulaire -->
+    <SplitPane dividerPositions="0.6" styleClass="split-pane-divider">
+        <VBox styleClass="content-area" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableAdherents" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colMatricule" text="Matricule" prefWidth="100"/>
+                    <TableColumn fx:id="colNom" text="Nom" prefWidth="150"/>
+                    <TableColumn fx:id="colPrenom" text="Prénom" prefWidth="150"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+                    <TableColumn fx:id="colTelephone" text="Téléphone" prefWidth="120"/>
+                    <TableColumn fx:id="colDateInscription" text="Date Inscription" prefWidth="120"/>
+                    <TableColumn fx:id="colActif" text="Statut" prefWidth="80"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <!-- Panneau de formulaire -->
+        <VBox styleClass="form-panel" spacing="10" prefWidth="350">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Formulaire Adhérent" styleClass="form-title" style="-fx-font-weight: bold;"/>
+
+            <ScrollPane styleClass="form-scroll" fitToWidth="true">
+                <VBox spacing="10">
+                    <GridPane hgap="10" vgap="10">
+                        <Label text="Matricule:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtMatricule" styleClass="form-input" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Nom:" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtNom" styleClass="form-input" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Prénom:" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtPrenom" styleClass="form-input" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Email:" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtEmail" styleClass="form-input" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <Label text="Téléphone:" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextField fx:id="txtTelephone" styleClass="form-input" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                        <Label text="Adresse:" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="txtAdresse" styleClass="form-input" prefRowCount="3" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+                        <Label text="Date Inscription:" styleClass="form-label" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="dateInscription" styleClass="form-input" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+                        <Label text="Actif:" styleClass="form-label" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="chkActif" styleClass="check-box" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+            </ScrollPane>
+
+            <!-- Boutons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button fx:id="btnNouveau" text="Nouveau" styleClass="button btn-secondary" onAction="#nouveauAdherent"/>
+                <Button fx:id="btnAjouter" text="Ajouter" styleClass="button btn-primary" onAction="#ajouterAdherent"/>
+                <Button fx:id="btnModifier" text="Modifier" styleClass="button btn-success" onAction="#modifierAdherent"/>
+                <Button fx:id="btnSupprimer" text="Supprimer" styleClass="button btn-danger" onAction="#supprimerAdherent"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button fx:id="btnSuspendre" text="Suspendre" styleClass="button btn-warning" onAction="#suspendreAdherent"/>
+                <Button fx:id="btnReactiver" text="Réactiver" styleClass="button btn-info" onAction="#reactiverAdherent"/>
+                <Button fx:id="btnHistorique" text="Historique" styleClass="button btn-secondary" onAction="#afficherHistorique"/>
+            </HBox>
+        </VBox>
+    </SplitPane>
+</VBox>

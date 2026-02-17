@@ -1,0 +1,170 @@
+/* ===================================================== */
+/* ROOT */
+/* ===================================================== */
+
+.app-root {
+    -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e293b);
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.label {
+    -fx-text-fill: #e2e8f0;
+}
+
+/* ===================================================== */
+/* STATS */
+/* ===================================================== */
+
+.stats-bar {
+    -fx-padding: 20;
+    -fx-spacing: 30;
+}
+
+.stat-card {
+    -fx-background-color: #1e293b;
+    -fx-padding: 20;
+    -fx-background-radius: 16;
+}
+
+.stat-title {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+
+.stat-value {
+    -fx-text-fill: #38bdf8;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.alert-text {
+    -fx-text-fill: #ef4444;
+    -fx-font-weight: bold;
+}
+
+/* ===================================================== */
+/* TABLE */
+/* ===================================================== */
+
+.modern-table {
+    -fx-background-color: #1e293b;
+    -fx-control-inner-background: #1e293b;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0f172a;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #1e293b;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #1a2436;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #2563eb;
+}
+
+.table-cell {
+    -fx-text-fill: #f1f5f9;
+}
+
+/* ===================================================== */
+/* RADIO BUTTON */
+/* ===================================================== */
+
+.radio-button {
+    -fx-text-fill: #e2e8f0;
+}
+
+.radio-button .radio {
+    -fx-background-color: #0f172a;
+    -fx-border-color: #64748b;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #3b82f6;
+}
+
+/* ===================================================== */
+/* FORM PANEL */
+/* ===================================================== */
+
+.form-panel {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 16;
+}
+
+.form-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* ===================================================== */
+/* INPUTS */
+/* ===================================================== */
+
+.text-field,
+.combo-box,
+.date-picker {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+}
+
+.text-field:focused,
+.combo-box:focused,
+.date-picker:focused {
+    -fx-border-color: #3b82f6;
+}
+
+/* DatePicker arrow fix */
+.date-picker .arrow-button {
+    -fx-background-color: #334155;
+}
+
+.date-picker .arrow {
+    -fx-background-color: white;
+}
+
+/* ===================================================== */
+/* BUTTONS */
+/* ===================================================== */
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 8 14;
+}
+
+.primary-button {
+    -fx-background-color: #3b82f6;
+}
+
+.success-button {
+    -fx-background-color: #22c55e;
+}
+
+.warning-button {
+    -fx-background-color: #f59e0b;
+}
+
+.secondary-button {
+    -fx-background-color: #475569;
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+}

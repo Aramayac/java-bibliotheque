@@ -1,0 +1,165 @@
+/* ===================================================== */
+/* ROOT */
+/* ===================================================== */
+
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e293b);
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.label {
+    -fx-text-fill: #e2e8f0;
+}
+
+/* ===================================================== */
+/* HEADER */
+/* ===================================================== */
+
+.header {
+    -fx-background-color: transparent;
+}
+
+.title {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.stat-label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+
+.stat-value {
+    -fx-text-fill: #38bdf8;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+/* ===================================================== */
+/* SEARCH */
+/* ===================================================== */
+
+.search-field {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+}
+
+.search-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2;
+}
+
+/* ===================================================== */
+/* TABLE */
+/* ===================================================== */
+
+.modern-table {
+    -fx-background-color: #1e293b;
+    -fx-control-inner-background: #1e293b;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0f172a;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #1e293b;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #1a2436;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #2563eb;
+}
+
+.table-cell {
+    -fx-text-fill: #f1f5f9;
+}
+
+/* ===================================================== */
+/* FORM PANEL */
+/* ===================================================== */
+
+.form-panel {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 16;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+}
+
+.form-title {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* ===================================================== */
+/* INPUTS */
+/* ===================================================== */
+
+.text-field,
+.combo-box {
+    -fx-background-color: #0f172a;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+}
+
+.text-field:focused,
+.combo-box:focused {
+    -fx-border-color: #3b82f6;
+}
+
+/* ComboBox popup */
+.combo-box-popup .list-view {
+    -fx-background-color: #1e293b;
+}
+
+.combo-box-popup .list-cell {
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #334155;
+}
+
+/* ===================================================== */
+/* BUTTONS */
+/* ===================================================== */
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 8 14;
+}
+
+.btn-primary {
+    -fx-background-color: #3b82f6;
+}
+
+.btn-warning {
+    -fx-background-color: #f59e0b;
+}
+
+.btn-danger {
+    -fx-background-color: #ef4444;
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+}

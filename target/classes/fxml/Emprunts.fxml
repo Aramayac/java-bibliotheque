@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="900.0" prefWidth="1400.0" style="-fx-background-color: #F5F7FB;"
+            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.livreshome.controller.EmpruntController">
+
+    <children>
+        <!-- MAIN CONTENT -->
+        <VBox prefHeight="900.0" prefWidth="1400.0" spacing="20.0">
+            <padding>
+                <Insets top="30.0" right="30.0" bottom="30.0" left="30.0"/>
+            </padding>
+            <children>
+                <!-- HEADER -->
+                <VBox spacing="10.0">
+                    <children>
+                        <Label text="Gestion des Emprunts" textFill="#1F2937">
+                            <font>
+                                <Font name="Segoe UI Bold" size="28.0"/>
+                            </font>
+                        </Label>
+                        <Label text="Enregistrez les emprunts et retours de livres" textFill="#6B7280">
+                            <font>
+                                <Font name="Segoe UI" size="13.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <!-- TOOLBAR -->
+                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                    <children>
+                        <!-- Spacer -->
+                        <javafx.scene.layout.Pane HBox.hgrow="ALWAYS"/>
+
+                        <!-- New Loan Button -->
+                        <JFXButton fx:id="btnNewLoan" onAction="#onNewLoan"
+                                   prefHeight="40.0" prefWidth="150.0"
+                                   style="-fx-background-color: #10B981; -fx-cursor: hand;"
+                                   text="➕ Nouvel Emprunt" textFill="#FFFFFF">
+                            <font>
+                                <Font name="Segoe UI SemiBold" size="12.0"/>
+                            </font>
+                        </JFXButton>
+
+                        <!-- Refresh Button -->
+                        <JFXButton fx:id="btnRefresh" onAction="#onRefresh"
+                                   prefHeight="40.0" prefWidth="40.0"
+                                   style="-fx-background-color: #4A6FA5; -fx-cursor: hand;"
+                                   text="🔄" textFill="#FFFFFF">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </JFXButton>
+                    </children>
+                </HBox>
+
+                <!-- STATS -->
+                <HBox spacing="20.0">
+                    <children>
+                        <!-- Active Loans -->
+                        <javafx.scene.layout.Pane prefHeight="80.0" prefWidth="250.0"
+                                                  style="-fx-background-color: #FFFFFF; -fx-border-color: #E8EDF5; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <children>
+                                <Label layoutX="15.0" layoutY="10.0" text="Emprunts Actuels" textFill="#6B7280">
+                                    <font>
+                                        <Font name="Segoe UI SemiBold" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="lblActiveLoans" layoutX="15.0" layoutY="35.0" text="0" textFill="#4A6FA5">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="24.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </javafx.scene.layout.Pane>
+
+                        <!-- Overdue Loans -->
+                        <javafx.scene.layout.Pane prefHeight="80.0" prefWidth="250.0"
+                                                  style="-fx-background-color: #FEF2F2; -fx-border-color: #FED7D7; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <children>
+                                <Label layoutX="15.0" layoutY="10.0" text="En Retard" textFill="#6B7280">
+                                    <font>
+                                        <Font name="Segoe UI SemiBold" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="lblOverdueLoans" layoutX="15.0" layoutY="35.0" text="0" textFill="#DC2626">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="24.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </javafx.scene.layout.Pane>
+
+                        <!-- Total Penalties -->
+                        <javafx.scene.layout.Pane prefHeight="80.0" prefWidth="250.0"
+                                                  style="-fx-background-color: #FFFFFF; -fx-border-color: #E8EDF5; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8;">
+                            <children>
+                                <Label layoutX="15.0" layoutY="10.0" text="Pénalités Totales" textFill="#6B7280">
+                                    <font>
+                                        <Font name="Segoe UI SemiBold" size="11.0"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="lblTotalPenalties" layoutX="15.0" layoutY="35.0" text="0.00€" textFill="#F59E0B">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="24.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </javafx.scene.layout.Pane>
+                    </children>
+                </HBox>
+
+                <!-- TABS -->
+                <TabPane prefHeight="600.0" prefWidth="1340.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <!-- Current Loans Tab -->
+                        <Tab text="Emprunts en Cours">
+                            <content>
+                                <VBox></VBox>
+                                <VBox fitToWidth="true" style="-fx-background: transparent; -fx-border-color: transparent;">
+                                    <children>
+                                        <TableView fx:id="tvEmpruntsActuels" prefHeight="500.0" prefWidth="1320.0">
+                                            <columns>
+                                                <TableColumn prefWidth="60.0" text="ID">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="id"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="200.0" text="Livre">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="livre"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="150.0" text="Adhérent">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="adherent"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Date Emprunt">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="dateEmprunt"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Retour Prévu">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="dateRetourPrevue"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="150.0" text="Actions">
+                                                    <!-- À implémenter -->
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+
+                        <!-- Overdue Loans Tab -->
+                        <Tab text="En Retard">
+                            <content>
+                                <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-border-color: transparent;">
+                                    <children>
+                                        <TableView fx:id="tvEmpruntsEnRetard" prefHeight="500.0" prefWidth="1320.0">
+                                            <columns>
+                                                <TableColumn prefWidth="60.0" text="ID">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="id"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="200.0" text="Livre">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="livre"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="150.0" text="Adhérent">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="adherent"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Retour Prévu">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="dateRetourPrevue"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Jours Retard">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="joursRetard"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Pénalité">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="penalite"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="150.0" text="Actions">
+                                                    <!-- À implémenter -->
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+
+                        <!-- Returned Loans Tab -->
+                        <Tab text="Retournés">
+                            <content>
+                                <VBox></VBox>
+                                <VBox fitToWidth="true" style="-fx-background: transparent; -fx-border-color: transparent;">
+                                    <children>
+                                        <TableView fx:id="tvEmpruntsRetournes" prefHeight="500.0" prefWidth="1320.0">
+                                            <columns>
+                                                <TableColumn prefWidth="60.0" text="ID">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="id"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="200.0" text="Livre">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="livre"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="150.0" text="Adhérent">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="adherent"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Emprunt">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="dateEmprunt"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Retour">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="dateRetourEffective"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="100.0" text="Pénalité">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="penalite"/>
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

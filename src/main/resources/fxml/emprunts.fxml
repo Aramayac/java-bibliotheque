@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.livrehome.controller.EmpruntController"
+            stylesheets="@../css/emprunts.css"
+            styleClass="app-root">
+
+    <!-- ================= TOP : STATISTIQUES ================= -->
+    <top>
+        <HBox alignment="CENTER_LEFT"
+              spacing="40"
+              styleClass="stats-bar">
+
+            <children>
+
+                <VBox styleClass="stat-card">
+                    <Label text="Total" styleClass="stat-title"/>
+                    <Label fx:id="lblTotalEmprunts" styleClass="stat-value"/>
+                </VBox>
+
+                <VBox styleClass="stat-card">
+                    <Label text="En cours" styleClass="stat-title"/>
+                    <Label fx:id="lblEmpruntsEnCours" styleClass="stat-value"/>
+                </VBox>
+
+                <VBox styleClass="stat-card">
+                    <Label text="Retards" styleClass="stat-title"/>
+                    <Label fx:id="lblEmpruntsRetard" styleClass="stat-value alert-text"/>
+                </VBox>
+
+                <Button text="Actualiser pénalités"
+                        onAction="#handleActualiserPenalites"
+                        styleClass="primary-button"/>
+
+            </children>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER : TABLE ================= -->
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+
+            <!-- Filtres -->
+            <HBox spacing="25">
+                <RadioButton fx:id="rbTous" text="Tous"/>
+                <RadioButton fx:id="rbEnCours" text="En cours"/>
+                <RadioButton fx:id="rbRetard" text="Retard"/>
+            </HBox>
+
+            <!-- Table -->
+            <TableView fx:id="tableEmprunts"
+                       prefHeight="450"
+                       styleClass="modern-table">
+
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="colLivre" text="Livre" prefWidth="200"/>
+                    <TableColumn fx:id="colAdherent" text="Adhérent" prefWidth="180"/>
+                    <TableColumn fx:id="colDateEmprunt" text="Date Emprunt" prefWidth="150"/>
+                    <TableColumn fx:id="colDateRetourPrevue" text="Retour Prévu" prefWidth="130"/>
+                    <TableColumn fx:id="colDateRetourEffective" text="Retour Effectif" prefWidth="150"/>
+                    <TableColumn fx:id="colStatut" text="Statut" prefWidth="100"/>
+                    <TableColumn fx:id="colPenalite" text="Pénalité" prefWidth="100"/>
+                </columns>
+
+            </TableView>
+
+        </VBox>
+    </center>
+
+    <!-- ================= RIGHT : FORMULAIRE ================= -->
+    <right>
+        <VBox spacing="14"
+              prefWidth="350"
+              styleClass="form-panel"
+              style="-fx-padding: 25;">
+
+            <Label text="Nouvel Emprunt"
+                   styleClass="form-title"/>
+
+            <Label text="Livre"/>
+            <ComboBox fx:id="cmbLivre" prefWidth="280"/>
+
+            <Label text="Adhérent"/>
+            <ComboBox fx:id="cmbAdherent" prefWidth="280"/>
+
+            <Label text="Durée (jours)"/>
+            <TextField fx:id="txtDureeJours" prefWidth="280"/>
+
+            <Label text="Date retour prévue"/>
+            <DatePicker fx:id="dateRetourPrevue" prefWidth="280"/>
+
+            <Label fx:id="lblPenalite" styleClass="alert-text"/>
+
+            <Separator/>
+
+            <Button fx:id="btnEnregistrer"
+                    text="Enregistrer"
+                    prefWidth="280"
+                    onAction="#enregistrerEmprunt"
+                    styleClass="success-button"/>
+
+            <Button fx:id="btnRetour"
+                    text="Enregistrer Retour"
+                    prefWidth="280"
+                    onAction="#enregistrerRetour"
+                    styleClass="warning-button"/>
+
+            <Button fx:id="btnNouveau"
+                    text="Nouveau"
+                    prefWidth="280"
+                    onAction="#nouveauEmprunt"
+                    styleClass="secondary-button"/>
+
+        </VBox>
+    </right>
+
+</BorderPane>

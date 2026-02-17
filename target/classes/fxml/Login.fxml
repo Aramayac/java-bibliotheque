@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;"
+            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.livreshome.controller.LoginController">
+
+    <children>
+        <!-- LEFT SIDE - BRANDING -->
+        <Pane layoutX="0.0" layoutY="0.0" prefHeight="700.0" prefWidth="500.0"
+              style="-fx-background-color: linear-gradient(to bottom, #4A6FA5, #2D3E50);">
+            <children>
+                <!-- Logo / Titre -->
+                <Label layoutX="50.0" layoutY="150.0" text="📚" textFill="#FFFFFF">
+                    <font>
+                        <Font size="80.0"/>
+                    </font>
+                </Label>
+
+                <Label layoutX="50.0" layoutY="250.0" text="Biblio_Z_221" textFill="#FFFFFF">
+                    <font>
+                        <Font name="Segoe UI Bold" size="48.0"/>
+                    </font>
+                </Label>
+
+                <Label layoutX="50.0" layoutY="310.0" text="Gestion Bibliothèque Municipale" textFill="#B0B8D4">
+                    <font>
+                        <Font name="Segoe UI" size="16.0"/>
+                    </font>
+                </Label>
+
+                <!-- Features -->
+                <VBox layoutX="50.0" layoutY="400.0" spacing="20.0" prefWidth="400.0">
+                    <children>
+                        <HBox spacing="15.0">
+                            <children>
+                                <Label text="✓" textFill="#10B981">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+                                <VBox spacing="3.0">
+                                    <children>
+                                        <Label text="Gestion Complète" textFill="#FFFFFF">
+                                            <font>
+                                                <Font name="Segoe UI SemiBold" size="13.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="Livres, adhérents et emprunts" textFill="#B0B8D4">
+                                            <font>
+                                                <Font name="Segoe UI" size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="15.0">
+                            <children>
+                                <Label text="✓" textFill="#10B981">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+                                <VBox spacing="3.0">
+                                    <children>
+                                        <Label text="Interface Moderne" textFill="#FFFFFF">
+                                            <font>
+                                                <Font name="Segoe UI SemiBold" size="13.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="Ergonomique et intuitive" textFill="#B0B8D4">
+                                            <font>
+                                                <Font name="Segoe UI" size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox spacing="15.0">
+                            <children>
+                                <Label text="✓" textFill="#10B981">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+                                <VBox spacing="3.0">
+                                    <children>
+                                        <Label text="Sécurité Renforcée" textFill="#FFFFFF">
+                                            <font>
+                                                <Font name="Segoe UI SemiBold" size="13.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label text="BCrypt et gestion des droits" textFill="#B0B8D4">
+                                            <font>
+                                                <Font name="Segoe UI" size="11.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </Pane>
+
+        <!-- RIGHT SIDE - LOGIN FORM -->
+        <VBox layoutX="500.0" layoutY="0.0" prefHeight="700.0" prefWidth="500.0"
+              spacing="30.0" alignment="CENTER">
+            <padding>
+                <Insets top="50.0" right="60.0" bottom="50.0" left="60.0"/>
+            </padding>
+            <children>
+                <!-- Title -->
+                <VBox spacing="10.0" alignment="CENTER">
+                    <children>
+                        <Label text="Connexion" textFill="#1F2937">
+                            <font>
+                                <Font name="Segoe UI Bold" size="32.0"/>
+                            </font>
+                        </Label>
+                        <Label text="Accédez à votre compte BiblioMax" textFill="#6B7280">
+                            <font>
+                                <Font name="Segoe UI" size="12.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <!-- Form -->
+                <VBox spacing="20.0">
+                    <children>
+                        <!-- Login Field -->
+                        <VBox spacing="8.0">
+                            <children>
+                                <Label text="Login" textFill="#1F2937">
+                                    <font>
+                                        <Font name="Segoe UI SemiBold" size="12.0"/>
+                                    </font>
+                                </Label>
+                                <JFXTextField fx:id="tfLogin" focusColor="#4A6FA5"
+                                              promptText="Entrez votre login" unFocusColor="#D1D5DB"
+                                              style="-fx-padding: 12;">
+                                    <font>
+                                        <Font name="Segoe UI" size="12.0"/>
+                                    </font>
+                                </JFXTextField>
+                            </children>
+                        </VBox>
+
+                        <!-- Password Field -->
+                        <VBox spacing="8.0">
+                            <children>
+                                <Label text="Mot de passe" textFill="#1F2937">
+                                    <font>
+                                        <Font name="Segoe UI SemiBold" size="12.0"/>
+                                    </font>
+                                </Label>
+                                <JFXPasswordField fx:id="pfMotDePasse" focusColor="#4A6FA5"
+                                                  promptText="Entrez votre mot de passe" unFocusColor="#D1D5DB"
+                                                  style="-fx-padding: 12;">
+                                    <font>
+                                        <Font name="Segoe UI" size="12.0"/>
+                                    </font>
+                                </JFXPasswordField>
+                            </children>
+                        </VBox>
+
+                        <!-- Remember Me -->
+                        <JFXCheckBox fx:id="cbRememberMe" text="Se souvenir de moi" textFill="#6B7280">
+                            <font>
+                                <Font name="Segoe UI" size="11.0"/>
+                            </font>
+                        </JFXCheckBox>
+                    </children>
+                </VBox>
+
+                <!-- Error Message -->
+                <Label fx:id="lblErrorMessage" text="" textFill="#DC2626" wrapText="true">
+                    <font>
+                        <Font name="Segoe UI" size="11.0"/>
+                    </font>
+                </Label>
+
+                <!-- Login Button -->
+                <JFXButton fx:id="btnLogin" onAction="#handleLogin" prefHeight="45.0"
+                           prefWidth="380.0" style="-fx-background-color: #4A6FA5; -fx-cursor: hand;"
+                           text="Connexion" textFill="#FFFFFF">
+                    <font>
+                        <Font name="Segoe UI SemiBold" size="14.0"/>
+                    </font>
+                </JFXButton>
+
+                <!-- Separator -->
+                <Separator prefWidth="200.0"/>
+
+                <!-- Version Info -->
+                <Label text="BiblioMax v1.0.0" textFill="#9CA3AF" alignment="CENTER">
+                    <font>
+                        <Font name="Segoe UI" size="10.0"/>
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- CONFIGURATION DE LA CONNEXION À LA BASE DE DONNÉES MYSQL        -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        
+        <!-- Driver JDBC MySQL -->
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+        
+        <!-- URL de connexion à la base de données -->
+        <!-- Format: jdbc:mysql://[serveur]:[port]/[nom_base]?options -->
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/bibliotheque_db?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true
+        </property>
+        
+        <!-- Nom d'utilisateur MySQL -->
+        <property name="hibernate.connection.username">root</property>
+        
+        <!-- Mot de passe MySQL -->
+        <!-- ⚠️ IMPORTANT: Changez ce mot de passe selon votre configuration! -->
+        <property name="hibernate.connection.password"> </property>
+        
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- CONFIGURATION DU POOL DE CONNEXIONS (C3P0)                      -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        
+        <!-- Nombre minimum de connexions dans le pool -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        
+        <!-- Nombre maximum de connexions dans le pool -->
+        <property name="hibernate.c3p0.max_size">20</property>
+        
+        <!-- Timeout pour les connexions inactives (en secondes) -->
+        <property name="hibernate.c3p0.timeout">300</property>
+        
+        <!-- Nombre maximum de statements en cache -->
+        <property name="hibernate.c3p0.max_statements">50</property>
+        
+        <!-- Intervalle de test des connexions inactives (en secondes) -->
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- CONFIGURATION HIBERNATE                                         -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        
+        <!-- Dialecte SQL - Version de MySQL à utiliser -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQL8Dialect
+        </property>
+        
+        <!-- Gestion automatique du schéma de base de données -->
+        <!-- Options: create, create-drop, update, validate, none -->
+        <!-- 
+            - create: Supprime et recrée les tables à chaque démarrage (⚠️ PERTE DE DONNÉES)
+            - create-drop: Crée au démarrage, supprime à l'arrêt
+            - update: Met à jour le schéma (ajoute colonnes manquantes) ✅ RECOMMANDÉ EN DEV
+            - validate: Valide le schéma sans le modifier
+            - none: Aucune action automatique
+        -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- Afficher les requêtes SQL dans la console -->
+        <property name="hibernate.show_sql">true</property>
+        
+        <!-- Formater joliment les requêtes SQL affichées -->
+        <property name="hibernate.format_sql">true</property>
+        
+        <!-- Afficher les commentaires SQL (utile pour le débogage) -->
+        <property name="hibernate.use_sql_comments">true</property>
+        
+        <!-- Encodage des caractères -->
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="hibernate.connection.CharSet">utf8</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+        
+        <!-- Thread de contexte pour les sessions -->
+        <property name="hibernate.current_session_context_class">thread</property>
+        
+        <!-- Désactiver la connexion automatique (recommandé) -->
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
+        
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- MAPPING DES CLASSES ENTITÉS                                      -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- 
+            Chaque classe @Entity doit être déclarée ici
+            Remplacez "com.example.livrehome" par votre package réel
+        -->
+        
+        <mapping class="com.example.livrehome.model.Utilisateur"/>
+        <mapping class="com.example.livrehome.model.Livre"/>
+        <mapping class="com.example.livrehome.model.Categorie"/>
+        <mapping class="com.example.livrehome.model.Adherent"/>
+        <mapping class="com.example.livrehome.model.Emprunt"/>
+        
+    </session-factory>
+</hibernate-configuration>
